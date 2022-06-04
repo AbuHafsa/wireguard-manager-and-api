@@ -5,7 +5,7 @@ import (
 	"gitlab.com/raspberry.tech/wireguard-manager-and-api/src/api/middleware"
 )
 
-func NewRouter() *mux.Router {
+func InitializeRoutes() *mux.Router {
 	router := mux.NewRouter()                   //Router for routes
 	router.Use(middleware.EnableCORSMiddleware) //need to allow CORS and OPTIONS
 	router.Use(middleware.AuthMiddleware)
