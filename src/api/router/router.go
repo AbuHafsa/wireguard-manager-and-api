@@ -1,15 +1,14 @@
 package router
 
 import (
-	"net/http"
-
 	"github.com/gorilla/mux"
+	"gitlab.com/raspberry.tech/wireguard-manager-and-api/src/api/middleware"
 )
 
 func NewRouter() *mux.Router {
-	router := mux.NewRouter() //Router for routes
-	router.Use(setHeader)     //need to allow CORS and OPTIONS
-	router.Use(authMiddleware)
+	router := mux.NewRouter()                   //Router for routes
+	router.Use(middleware.EnableCORSMiddleware) //need to allow CORS and OPTIONS
+	router.Use(middleware.AuthMiddleware)
 
 	manager := router.PathPrefix("/manager").Subrouter() //main subrouter
 
@@ -25,6 +24,6 @@ func NewRouter() *mux.Router {
 	subscriptions.HandleFunc("/edit", keySetSubscription).Methods("POST") //for editing subscription
 	subscriptions.HandleFunc("", getKeySub).Methods("POST")
 
-	router.MethodNotAllowedHandler = http.HandlerFunc(setCorsHeader) //if method is not found allow OPTIONS
+	// router.MethodNotAllowedHandler = http.HandlerFunc(middleware.SetCORSHeaders) //if method is not found allow OPTIONS
 	return router
 }
