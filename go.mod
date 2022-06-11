@@ -3,6 +3,7 @@ module gitlab.com/raspberry.tech/wireguard-manager-and-api
 go 1.16
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.0 // indirect
 	github.com/go-co-op/gocron v1.6.2
 	github.com/gorilla/mux v1.8.0
 	github.com/joho/godotenv v1.3.0
