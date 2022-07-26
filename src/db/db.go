@@ -13,6 +13,10 @@ import (
 
 var DBSystem *gorm.DB
 
+type Repository struct {
+	Db *gorm.DB
+}
+
 func DBStart() {
 	combinedLogger := logger.GetCombinedLogger()
 	combinedLogger.Info("Starting the database")
