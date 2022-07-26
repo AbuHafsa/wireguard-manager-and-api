@@ -1,3 +1,5 @@
 wireguard-manager-and-api
 main
 .env
+
+.idea/
