@@ -17,5 +17,5 @@ func main() {
 	db.DBStart()
 	network.SetupWG()
 	autocheck.AutoStart()
-	api.API()
+	api.RunServer()
 }
